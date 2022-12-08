@@ -27,9 +27,12 @@ $(document).ready(function(){
         //Affichage des modals
         if(show_day){
             // on charge le cadeau
-            let aleatoire = Math.floor((Math.random()*25));
+            let aleatoire = Math.floor((Math.random()*25));//à chaque fois que tu clique sur la date d'aujourd'hui ça affiche une date aleatoire, le aleatoire juste en dessous doit être remplaçé par day_request pour fonctionner correctement
             $.get(param.data_folder+aleatoire+".html",function(data){
                 //On met à jour notre modal avec le code HTML
+                let son3  =document.createElement('audio');
+                son3.src="assets/son/son3.mp3";
+                son3.play();
                 $('.day-content').html(data);
                 //On ouvre la modal
                 $('#day-modal').modal({
@@ -41,11 +44,17 @@ $(document).ready(function(){
         } else {
             //Si on selectionne un jour déjà passé 
             if(day_request < today_day){
+                let son1  =document.createElement('audio');
+                son1.src="assets/son/son1.mp3";
+                son1.play();
                 $('#passed-day-modal').modal({
                     fadeDuration: 200
                 });
             } 
             else {
+                let son2  =document.createElement('audio');
+                son2.src="assets/son/son2.mp3";
+                son2.play();
                 $('#no-day-modal').modal({
                     fadeDuration: 200
                 });
