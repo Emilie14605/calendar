@@ -27,7 +27,8 @@ $(document).ready(function(){
         //Affichage des modals
         if(show_day){
             // on charge le cadeau
-            $.get(param.data_folder+day_request+".html",function(data){
+            let aleatoire = Math.floor((Math.random()*25));
+            $.get(param.data_folder+aleatoire+".html",function(data){
                 //On met à jour notre modal avec le code HTML
                 $('.day-content').html(data);
                 //On ouvre la modal
@@ -52,5 +53,14 @@ $(document).ready(function(){
         }
     });
 });
-
-//position absolute, left et top, fonction aleatoire, settimeout
+function papanoel(){
+    let papa = document.getElementById('papanoel');
+    let position_top = Math.floor((Math.random()*500));
+    let position_bottom = Math.floor((Math.random()*600));
+    papa.style.top = position_top+'px';
+    papa.style.left = position_bottom+'px';
+    console.log(position_top);
+    // $('#papanoel').css('top',position_top);
+    let bouger = setTimeout("papanoel()", 1000);
+}
+papanoel();
